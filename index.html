@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>채팅처럼 보이는 노션 스타일</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eaeef3;
+      padding: 20px;
+    }
+
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      margin: 0 auto;
+      gap: 24px;
+    }
+
+    .post {
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .post-content {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+
+    .comments {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-left: 12px;
+      border-left: 3px solid #d0d5dd;
+    }
+
+    .comment {
+      padding: 10px 14px;
+      border-radius: 12px;
+      width: fit-content;
+      max-width: 80%;
+      clear: both;
+      align-self: flex-start;
+    }
+
+    .comment.self {
+      align-self: flex-end;
+    }
+
+    .username {
+      font-size: 0.85rem;
+      font-weight: bold;
+      opacity: 0.8;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* 유저별 색상 */
+    .comment.jiho {
+      background-color: #DA4F51;
+      color: #fff;
+    }
+
+    .comment.sungwon {
+      background-color: #A28576;
+      color: #fff;
+    }
+
+    .comment.hyunjin {
+      background-color: #FFE393;
+      color: #000;
+    }
+
+    .comment.geon {
+      background-color: #92E100;
+      color: #000;
+    }
+
+    .comment.seungrok {
+      background-color: #898AB3;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="post">
+      <div class="post-content">오늘 할 일 공유해요!</div>
+      <div class="comments">
+        <div class="comment jiho">
+          <span class="username">강지호</span>
+          어제 페이지 구조 다시 짜봤어요!
+        </div>
+        <div class="comment sungwon">
+          <span class="username">신성원</span>
+          저도 확인했어요. 깔끔하게 잘 정리됐네요!
+        </div>
+        <div class="comment hyunjin">
+          <span class="username">유현진</span>
+          좋아요! 이미지 넣는 작업 진행할게요.
+        </div>
+        <div class="comment geon">
+          <span class="username">박 건</span>
+          저는 체크리스트 업데이트할게요.
+        </div>
+        <div class="comment seungrok">
+          <span class="username">전승록</span>
+          다들 수고 많아요~ 발표자료도 함께 볼게요.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // prompt 창을 통해 현재 사용자 ID를 입력 받음
+    const currentUser = prompt("당신의 사용자 ID를 입력하세요 (예: jiho, sungwon, hyunjin, geon, seungrok)");
+
+    // 입력된 ID에 맞는 채팅만 우측으로 정렬
+    document.querySelectorAll('.comment').forEach(comment => {
+      if (comment.classList.contains(currentUser)) {
+        comment.classList.add('self'); // 오른쪽 정렬
+      }
+    });
+  </script>
+</body>
+</html>
